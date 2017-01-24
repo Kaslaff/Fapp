@@ -14,11 +14,11 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->integer('site_ref');
-            $table->string('site_user');
+            $table->unsignedInteger('site_ref');
+            $table->string('site_user', 50);
             $table->string('site_pass');
-            $table->integer('user_inserter');
-            $table->integer('user_tester')->nullable();
+            $table->unsignedInteger('user_inserter');
+            $table->unsignedInteger('user_tester')->nullable();
             $table->boolean('banned');
             $table->boolean('granted');
             $table->timestamps();

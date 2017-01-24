@@ -15,7 +15,7 @@ class CreateAchievementsTable extends Migration
     {
         Schema::create('achievements', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('site_ref');
+            $table->unsignedInteger('site_ref');
             $table->integer('exp');
             $table->integer('inserts');
             $table->integer('tests');

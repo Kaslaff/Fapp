@@ -14,8 +14,8 @@ class CreateUsersAchievementsTable extends Migration
     public function up()
     {
         Schema::create('users_achievements', function (Blueprint $table) {
-            $table->integer('user_ref');
-            $table->integer('site_ref');
+            $table->unsignedInteger('user_ref');
+            $table->unsignedInteger('site_ref');
             $table->timestamps();
 
             $table->primary(['user_ref', 'site_ref']);
