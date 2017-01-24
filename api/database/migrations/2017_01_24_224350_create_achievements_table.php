@@ -14,13 +14,13 @@ class CreateAchievementsTable extends Migration
     public function up()
     {
         Schema::create('achievements', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id');   /* I think this is not necessary */
             $table->unsignedInteger('site_ref');
-            $table->integer('exp');
-            $table->integer('inserts');
-            $table->integer('tests');
-            $table->integer('bans');
-            $table->integer('grants');
+            $table->integer('exp')->default(0);
+            $table->integer('inserts')->default(0);
+            $table->integer('tests')->default(0);
+            $table->integer('bans')->default(0);
+            $table->integer('grants')->default(0);
             $table->timestamps();
 
             $table->foreign('site_ref')->references('id')->on('sites');

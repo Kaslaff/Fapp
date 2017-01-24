@@ -19,8 +19,8 @@ class CreateAccountsTable extends Migration
             $table->string('site_pass');
             $table->unsignedInteger('user_inserter');
             $table->unsignedInteger('user_tester')->nullable();
-            $table->boolean('banned');
-            $table->boolean('granted');
+            $table->boolean('banned')->default(0);
+            $table->boolean('granted')->default(0);
             $table->timestamps();
 
             $table->primary(['site_ref', 'site_user']);
