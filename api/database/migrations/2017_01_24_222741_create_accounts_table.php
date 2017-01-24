@@ -21,7 +21,10 @@ class CreateAccountsTable extends Migration
             $table->unsignedInteger('user_tester')->nullable();
             $table->boolean('banned')->default(0);
             $table->boolean('granted')->default(0);
-            $table->timestamps();
+            
+            /* timestamps */
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
             $table->primary(['site_ref', 'site_user']);
             $table->foreign('site_ref')->references('id')->on('sites');

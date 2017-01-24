@@ -13,12 +13,19 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-    static $password;
+
+    $dateTime = $faker->dateTime();
 
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'user' => $faker->name,
+        'pass' => bcrypt($faker->password),
+        'fm' => 0,
+        'exp' => $faker->numberBetween(0, 100000),
+        'inserted' => $faker->numberBetween(0, 100000),
+        'tested' => $faker->numberBetween(0, 100),
+        'banned' => $faker->numberBetween(0, 10000),
+        'granted' => $faker->numberBetween(0, 50),
+        'created_at' => $dateTime,
+        'updated_at' => $dateTime
     ];
 });

@@ -17,7 +17,10 @@ class CreateSitesTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
             $table->integer('required_exp')->default(0);
-            $table->timestamps();
+
+            /* timestamps */
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
         });
     }
 

@@ -16,7 +16,10 @@ class CreateUsersAchievementsTable extends Migration
         Schema::create('users_achievements', function (Blueprint $table) {
             $table->unsignedInteger('user_ref');
             $table->unsignedInteger('site_ref');
-            $table->timestamps();
+            
+            /* timestamps */
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
             $table->primary(['user_ref', 'site_ref']);
             $table->foreign('site_ref')->references('id')->on('sites');
