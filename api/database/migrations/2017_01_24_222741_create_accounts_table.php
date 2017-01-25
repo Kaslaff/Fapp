@@ -14,11 +14,12 @@ class CreateAccountsTable extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
+			$table->increment('id');
             $table->unsignedInteger('site_ref');
-            $table->string('site_user', 50);
-            $table->string('site_pass');
-            $table->unsignedInteger('user_inserter');
+			$table->unsignedInteger('user_inserter');
             $table->unsignedInteger('user_tester')->nullable();
+            $table->string('site_user');
+            $table->string('site_pass');
             $table->boolean('banned')->default(0);
             $table->boolean('granted')->default(0);
             
@@ -26,7 +27,6 @@ class CreateAccountsTable extends Migration
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->primary(['site_ref', 'site_user']);
             $table->foreign('site_ref')->references('id')->on('sites');
             $table->foreign('user_inserter')->references('id')->on('users');
             $table->foreign('user_tester')->references('id')->on('users');
