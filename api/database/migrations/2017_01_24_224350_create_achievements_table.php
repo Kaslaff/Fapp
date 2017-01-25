@@ -21,10 +21,9 @@ class CreateAchievementsTable extends Migration
             $table->integer('tests')->default(0);
             $table->integer('bans')->default(0);
             $table->integer('grants')->default(0);
-            
+
             /* timestamps */
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
 
             $table->foreign('site_ref')->references('id')->on('sites');
         });

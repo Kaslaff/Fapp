@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function up()
-    {   
+    {
         /* Should we add a email attribute? */
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
@@ -24,14 +24,13 @@ class CreateUsersTable extends Migration
             $table->integer('tested')->default(0);
 
             /* Why we do this ? */
-            $table->integer('banned')->default(0); 
+            $table->integer('banned')->default(0);
             /********************/
 
             $table->integer('granted')->default(0);
 
             /* timestamps */
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));;
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+            $table->timestamps();
         });
     }
 
