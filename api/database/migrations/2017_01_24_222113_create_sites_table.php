@@ -17,8 +17,8 @@ class CreateSitesTable extends Migration
             $table->increments('id');
             $table->string('name', 100)->unique();
             $table->integer('required_exp')->default(0);
-			$table->unsignedInteger('last_granted');
-			$table->unsignedInteger('last_tested');
+			$table->unsignedInteger('last_granted')->nullable();
+			$table->unsignedInteger('last_tested')->nullable();
 
             /* timestamps */
             $table->timestamps();
